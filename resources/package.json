@@ -6,13 +6,6 @@
   "license": "CC-BY-NC-SA-4.0",
   "private": false,
   "repository": "https://github.com/project-error/new-phone-who-dis",
-  "scripts": {
-    "build": "cd ../ && go run build.go",
-    "build:release": "cross-env IS_SENTRY=true webpack --mode production",
-    "watch": "cd ../ && go run watch.go",
-    "test": "jest",
-    "lint": "eslint . --ext .ts"
-  },
   "dependencies": {
     "@discordjs/collection": "^0.2.4",
     "@project-error/pe-utils": "^0.1.6",

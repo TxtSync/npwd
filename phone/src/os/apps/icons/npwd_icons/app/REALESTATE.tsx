@@ -1,7 +1,7 @@
 import React from 'react';
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
-const BankAppIcon = (props: SvgIconProps) => {
+const RealEstateIcon = (props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -41,4 +41,4 @@ const BankAppIcon = (props: SvgIconProps) => {
   );
 };
 
-export default BankAppIcon;
+export default RealEstateIcon;

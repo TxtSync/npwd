@@ -5,7 +5,7 @@ import { ContactsApp } from '../../../apps/contacts/components/ContactsApp';
 import { CalculatorApp } from '../../../apps/calculator/components/CalculatorApp';
 import { SettingsApp } from '../../../apps/settings/components/SettingsApp';
 import { MessagesApp } from '../../../apps/messages/components/MessagesApp';
-import { ExampleAppWrapper } from '../../../apps/example/components/ExampleAppWrapper';
+import { RealEstateAppWrapper } from '../../../apps/realestate/components/RealEstateAppWrapper';
 import { MarketplaceApp } from '../../../apps/marketplace/components/MarketplaceApp';
 import { NotesApp } from '../../../apps/notes/NotesApp';
 import CameraApp from '../../../apps/camera/components/CameraApp';
@@ -177,13 +177,18 @@ export const APPS: IAppConfig[] = [
 // Example app only in dev
 if (process.env.NODE_ENV === 'development') {
   APPS.push({
-    id: 'EXAMPLE',
-    nameLocale: 'APPS_EXAMPLE',
-    backgroundColor: blue[500],
+    id: 'REALESTATE',
+    nameLocale: 'APPS_REALESTATE',
+    backgroundColor: '#0b4e1a',
     color: blue[50],
-    path: '/example',
+    path: '/realestate',
     Route: () => (
-      <AppRoute id="EXAMPLE" path="/example" component={ExampleAppWrapper} emitOnOpen={false} />
+      <AppRoute
+        id="REALESTATE"
+        path="/realestate"
+        component={RealEstateAppWrapper}
+        emitOnOpen={false}
+      />
     ),
   });
 }

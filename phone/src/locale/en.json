@@ -101,6 +101,7 @@
       "NAVBAR_CONTACTS": "Contacts",
       "NO_HISTORY": "You have no call history"
     },
+    "REALESTATE": {},
     "TWITTER": {
       "FEEDBACK": {
         "CREATE_PROFILE_SUCCESS": "Successfully created your profile",
@@ -283,7 +284,7 @@
     "APPS_SETTINGS": "Settings",
     "APPS_BANK": "WhoDis Banking",
     "APPS_NOTES": "Notes",
-    "APPS_EXAMPLE": "Example app",
+    "APPS_REALESTATE": "Real Estate",
     "APPS_TWITTER": "Twitter",
     "APPS_MARKETPLACE": "Marketplace",
     "APPS_CAMERA": "Camera",
