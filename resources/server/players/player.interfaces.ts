@@ -3,6 +3,7 @@ export interface PlayerAddData {
   identifier: string;
   phoneNumber?: string;
   firstname?: string;
+  account: string;
   lastname?: string;
 }
 
@@ -11,4 +12,5 @@ export interface CreatePlayerInstance {
   username: string;
   identifier: string;
   phoneNumber: string;
+  account: string;
 }

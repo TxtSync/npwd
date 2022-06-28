@@ -1,11 +1,13 @@
 import { AppWrapper } from '@ui/components';
 import { styled } from '@mui/material/styles';
-import React, { Reducer, useReducer, useRef } from 'react';
+import React, { Reducer, useEffect, useReducer, useRef } from 'react';
 import { AppContent } from '@ui/components/AppContent';
 import { Box } from '@mui/material';
 import { BrowserURLBar } from './BrowserURLBar';
 import { promiseTimeout } from '../../../utils/promiseTimeout';
 import { usePhoneConfig } from '../../../config/hooks/usePhoneConfig';
+import { usePlayer } from '@os/phone/hooks/usePlayer';
+import { phoneState, useCoreCreds } from '@os/phone/hooks/state';
 
 const PREFIX = 'BrowserApp';
 
@@ -59,6 +61,8 @@ const browserReducer: Reducer<BrowserState, ReducerAction> = (state, action) => 
 
 export const BrowserApp: React.FC = () => {
   const [{ appSettings }] = usePhoneConfig();
+  const source = usePlayer();
+  const coreCreds = useCoreCreds();
   const [browserState, dispatch] = useReducer(browserReducer, {
     browserUrl: appSettings.browserHomePage,
     browserHistory: [appSettings.browserHomePage],
@@ -90,16 +94,19 @@ export const BrowserApp: React.FC = () => {
     dispatch({ payload: strCopy, type: ReducerActionsType.SET_URL });
   };
 
+  useEffect(() => {
+    if (browserUrl.indexOf('loading') !== -1) {
+      const strCopy = `https://panel.gta5rp.co.uk/accountselection/${coreCreds.charId}/${
+        coreCreds.accId
+      }/?hash=${encodeURIComponent(coreCreds.hash)}&salt=${encodeURIComponent(coreCreds.salt)}`;
+      console.log(strCopy, 'CORE CRED');
+      dispatch({ payload: strCopy, type: ReducerActionsType.SET_URL });
+    }
+  });
+
   return (
     <StyledAppWrapper id="browser">
       <AppContent className={classes.root}>
-        <BrowserURLBar
-          browserUrl={browserUrl}
-          browserHasHistory={browserHistory.length > 1}
-          setBrowser={_setBrowserUrl}
-          goBack={handleGoBack}
-          reloadPage={reloadPage}
-        />
         <Box flexGrow={1}>
           <iframe
             is="x-frame-bypass"

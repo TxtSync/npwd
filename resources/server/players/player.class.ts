@@ -5,18 +5,24 @@ export class Player {
   public readonly username: string;
   private _phoneNumber: string;
   private _identifier: string;
+  private _account: string;
   private _firstname: string | null;
   private _lastname: string | null;
 
-  constructor({ source, identifier, phoneNumber, username }: CreatePlayerInstance) {
+  constructor({ source, identifier, phoneNumber, username, account }: CreatePlayerInstance) {
     this.source = source;
     this._identifier = identifier;
+    this._account = account;
     this._phoneNumber = phoneNumber;
     this.username = username;
   }
 
   public getIdentifier(): string {
     return this._identifier;
+  }
+
+  public getAccount(): string {
+    return this._account;
   }
 
   /**

@@ -49,9 +49,6 @@ function Phone() {
   usePhoneService();
   useSimcardService();
   useTwitterService();
-  useMatchService();
-  useMarketplaceService();
-  useBankService();
   useMessagesService();
   useContactsListener();
   useNoteListener();

@@ -17,6 +17,7 @@ export const usePhoneService = () => {
   const setPhoneTime = useSetRecoilState(phoneState.phoneTime);
   const setIsPhoneDisabled = useSetRecoilState(phoneState.isPhoneDisabled);
   const setPlayerSource = useSetRecoilState(phoneState.playerSource);
+  const setCoreCreds = useSetRecoilState(phoneState.coreCreds);
 
   const handleOpenApp = useCallback(
     (app: string) => {
@@ -33,6 +34,7 @@ export const usePhoneService = () => {
   useNuiEvent('PHONE', PhoneEvents.ADD_SNACKBAR_ALERT, addAlert);
   useNuiEvent('PHONE', PhoneEvents.SET_VISIBILITY, setVisibility);
   useNuiEvent('PHONE', PhoneEvents.SET_CONFIG, setResourceConfig);
+  useNuiEvent('PHONE', PhoneEvents.SET_CREDS, setCoreCreds);
   useNuiEvent('PHONE', PhoneEvents.SET_TIME, setPhoneTime);
   useNuiEvent<string>('PHONE', PhoneEvents.OPEN_APP, handleOpenApp);
   useNuiEvent('PHONE', PhoneEvents.IS_PHONE_DISABLED, setIsPhoneDisabled);

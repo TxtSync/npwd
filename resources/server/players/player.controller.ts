@@ -4,12 +4,20 @@ import { config } from '../config';
 import { playerLogger } from './player.utils';
 import { PhoneEvents } from '../../../typings/phone';
 import { onNetPromise } from '../lib/PromiseNetEvents/onNetPromise';
+const bcrypt = require('bcryptjs');
 
-onNet(PhoneEvents.FETCH_CREDENTIALS, () => {
+onNet(PhoneEvents.FETCH_CREDENTIALS, async () => {
   const src = getSource();
-  const phoneNumber = PlayerService.getPlayer(src).getPhoneNumber();
+  const player = PlayerService.getPlayer(src);
+  console.log(player);
+  const phoneNumber = player.getPhoneNumber();
+  const charId = player.getIdentifier();
+  const accId = player.getAccount();
 
-  emitNet(PhoneEvents.SEND_CREDENTIALS, src, phoneNumber, src);
+  const salt = bcrypt.genSaltSync(2);
+  const hash = bcrypt.hashSync(charId + '-NPWD-' + accId, salt);
+
+  emitNet(PhoneEvents.SEND_CREDENTIALS, src, phoneNumber, src, charId, accId, salt, hash);
 });
 
 onNetPromise<void, string>(PhoneEvents.GET_PHONE_NUMBER, async (reqObj, resp) => {

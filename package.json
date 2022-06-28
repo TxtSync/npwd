@@ -26,5 +26,8 @@
     "hooks": {
       "pre-commit": "npx run format:staged"
     }
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
   }
 }

@@ -124,14 +124,6 @@ export const APPS: IAppConfig[] = [
     Route: () => <AppRoute id="BANK" path="/bank" component={BankApp} />,
   },*/
   {
-    id: 'MATCH',
-    nameLocale: 'APPS_MATCH',
-    backgroundColor: MATCH_APP_PRIMARY_COLOR,
-    color: MATCH_APP_TEXT_COLOR,
-    path: '/match',
-    Route: () => <AppRoute id="MATCH" path="/match" component={MatchApp} emitOnOpen={false} />,
-  },
-  {
     id: 'TWITTER',
     nameLocale: 'APPS_TWITTER',
     backgroundColor: TWITTER_APP_PRIMARY_COLOR,
@@ -139,21 +131,6 @@ export const APPS: IAppConfig[] = [
     path: '/twitter',
     Route: () => (
       <AppRoute id="TWITTER" path="/twitter" component={TwitterContainer} emitOnOpen={false} />
-    ),
-  },
-  {
-    id: 'MARKETPLACE',
-    nameLocale: 'APPS_MARKETPLACE',
-    backgroundColor: MARKETPLACE_APP_PRIMARY_COLOR,
-    color: MARKETPLACE_APP_ICON_COLOR,
-    path: '/marketplace',
-    Route: () => (
-      <AppRoute
-        id="MARKETPLACE"
-        path="/marketplace"
-        component={MarketplaceApp}
-        emitOnOpen={false}
-      />
     ),
   },
   {
@@ -174,21 +151,18 @@ export const APPS: IAppConfig[] = [
   },
 ];
 
-// Example app only in dev
-if (process.env.NODE_ENV === 'development') {
-  APPS.push({
-    id: 'REALESTATE',
-    nameLocale: 'APPS_REALESTATE',
-    backgroundColor: '#0b4e1a',
-    color: blue[50],
-    path: '/realestate',
-    Route: () => (
-      <AppRoute
-        id="REALESTATE"
-        path="/realestate"
-        component={RealEstateAppWrapper}
-        emitOnOpen={false}
-      />
-    ),
-  });
-}
+APPS.push({
+  id: 'REALESTATE',
+  nameLocale: 'APPS_REALESTATE',
+  backgroundColor: '#0b4e1a',
+  color: blue[50],
+  path: '/realestate',
+  Route: () => (
+    <AppRoute
+      id="REALESTATE"
+      path="/realestate"
+      component={RealEstateAppWrapper}
+      emitOnOpen={false}
+    />
+  ),
+});

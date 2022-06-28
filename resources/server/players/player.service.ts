@@ -123,6 +123,7 @@ class _PlayerService {
       source: pSource,
       username,
       phoneNumber: phone_number,
+      account: '',
     });
 
     this.addPlayerToMaps(pSource, newPlayer);
@@ -151,23 +152,21 @@ class _PlayerService {
     src,
     identifier,
     phoneNumber,
+    account,
   }: {
     src: number;
     identifier: string;
+    account: string;
     phoneNumber: string;
   }): Promise<Player | null> {
     const username = GetPlayerName(src.toString());
-
-    if (!phoneNumber) {
-      phoneNumber = await findOrGeneratePhoneNumber(identifier);
-      if (!phoneNumber) return null;
-    }
 
     return new Player({
       source: src,
       identifier,
       phoneNumber,
       username,
+      account,
     });
   }
 
@@ -183,11 +182,13 @@ class _PlayerService {
     phoneNumber,
     firstname,
     lastname,
+    account,
   }: PlayerAddData) {
     const player = await this.createNewPlayer({
       src,
       identifier: identifier.toString(),
       phoneNumber,
+      account,
     });
 
     if (firstname) player.setFirstName(firstname);

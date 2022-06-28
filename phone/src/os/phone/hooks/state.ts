@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, useRecoilValue } from 'recoil';
 import { ResourceConfig } from '@typings/config';
 
 export const phoneState = {
@@ -22,4 +22,12 @@ export const phoneState = {
     key: 'playerSource',
     default: 0,
   }),
+  coreCreds: atom<any>({
+    key: 'coreCreds',
+    default: false,
+  }),
+};
+
+export const useCoreCreds = () => {
+  return useRecoilValue(phoneState.coreCreds);
 };
